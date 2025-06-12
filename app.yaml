@@ -1,0 +1,17 @@
+runtime: nodejs20
+instance_class: F1
+env_variables:
+  NODE_ENV: "production"
+automatic_scaling:
+  min_instances: 0
+  max_instances: 1
+handlers:
+  - url: /js
+    static_dir: public/js
+  - url: /css
+    static_dir: public/css
+  - url: /favicon\.ico
+    static_files: public/favicon.ico
+    upload: public/favicon\.ico
+  - url: /.*
+    script: auto
