@@ -3,7 +3,7 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Guía Interactiva de Atajos con IA</title>
+    <title></title>
     <script src="https://cdn.tailwindcss.com"></script>
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
@@ -16,12 +16,11 @@
   <body class="text-slate-700">
     <div class="container mx-auto px-4 py-8 md:py-12">
       <header class="text-center mb-8">
-        <h1 class="text-3xl md:text-4xl font-bold text-slate-800 mb-2">
-          Guía Interactiva de Atajos
-        </h1>
-        <p class="text-slate-500 max-w-2xl mx-auto">
-          Busca en nuestra guía o pregunta a la IA por atajos de cualquier app.
-        </p>
+        <h1
+          id="mainTitle"
+          class="text-3xl md:text-4xl font-bold text-slate-800 mb-2"
+        ></h1>
+        <p id="mainSubtitle" class="text-slate-500 max-w-2xl mx-auto"></p>
       </header>
 
       <div class="sticky top-0 bg-f8fafc/80 backdrop-blur-sm z-10 py-4 mb-8">
@@ -36,6 +35,7 @@
             type="submit"
             class="absolute right-2 top-1/2 -translate-y-1/2 h-10 w-10 flex items-center justify-center rounded-full text-slate-400 hover:bg-indigo-100 hover:text-indigo-600 transition-colors"
             aria-label="Buscar con IA"
+            id="searchBtn"
           >
             <svg
               class="h-6 w-6"
@@ -60,21 +60,18 @@
           <button
             data-target="chrome"
             class="nav-btn font-semibold text-slate-500 py-3 px-2 active"
-          >
-            Google Chrome
-          </button>
+            id="navChrome"
+          ></button>
           <button
             data-target="text"
             class="nav-btn font-semibold text-slate-500 py-3 px-2"
-          >
-            Edición de Texto
-          </button>
+            id="navText"
+          ></button>
           <button
             data-target="macos"
             class="nav-btn font-semibold text-slate-500 py-3 px-2"
-          >
-            Sistema macOS
-          </button>
+            id="navMacos"
+          ></button>
         </nav>
       </div>
 
@@ -83,10 +80,28 @@
       <p
         id="noResults"
         class="text-center text-slate-500 text-lg font-medium hidden mt-12"
-      >
-        No se encontraron atajos que coincidan con tu búsqueda.
-      </p>
+      ></p>
     </div>
-    <script src="js/main.js"></script>
+    <script type="module" src="js/main.js"></script>
+    <script type="module">
+      import { strings } from "./js/i18n.js";
+      const browserLang = (
+        navigator.language ||
+        navigator.userLanguage ||
+        "es"
+      ).slice(0, 2);
+      const lang = ["es", "en"].includes(browserLang) ? browserLang : "es";
+      const t = strings[lang];
+      document.getElementById("mainTitle").textContent = t.mainTitle;
+      document.getElementById("mainSubtitle").textContent = t.mainSubtitle;
+      document.getElementById("searchInput").placeholder = t.searchPlaceholder;
+      document
+        .getElementById("searchBtn")
+        .setAttribute("aria-label", t.searchBtn);
+      document.getElementById("navChrome").textContent = t.navChrome;
+      document.getElementById("navText").textContent = t.navText;
+      document.getElementById("navMacos").textContent = t.navMacos;
+      document.getElementById("noResults").textContent = t.noResults;
+    </script>
   </body>
 </html>

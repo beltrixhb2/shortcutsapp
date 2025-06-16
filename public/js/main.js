@@ -1,377 +1,6 @@
+import { shortcuts, keyMap } from "./shortcuts-data.js";
+
 document.addEventListener("DOMContentLoaded", () => {
-  const shortcuts = [
-    // Google Chrome
-    {
-      category: "chrome",
-      subCategory: "Gestión de Pestañas y Ventanas",
-      action: "Abrir una nueva ventana",
-      keys: "⌘ + N",
-    },
-    {
-      category: "chrome",
-      subCategory: "Gestión de Pestañas y Ventanas",
-      action: "Abrir una nueva ventana de incógnito",
-      keys: "⇧ + ⌘ + N",
-    },
-    {
-      category: "chrome",
-      subCategory: "Gestión de Pestañas y Ventanas",
-      action: "Abrir una nueva pestaña",
-      keys: "⌘ + T",
-    },
-    {
-      category: "chrome",
-      subCategory: "Gestión de Pestañas y Ventanas",
-      action: "Reabrir la última pestaña cerrada",
-      keys: "⇧ + ⌘ + T",
-    },
-    {
-      category: "chrome",
-      subCategory: "Gestión de Pestañas y Ventanas",
-      action: "Cerrar la pestaña actual",
-      keys: "⌘ + W",
-    },
-    {
-      category: "chrome",
-      subCategory: "Gestión de Pestañas y Ventanas",
-      action: "Cerrar la ventana actual",
-      keys: "⇧ + ⌘ + W",
-    },
-    {
-      category: "chrome",
-      subCategory: "Gestión de Pestañas y Ventanas",
-      action: "Ir a la siguiente pestaña",
-      keys: "⌘ + ⌥ + →",
-    },
-    {
-      category: "chrome",
-      subCategory: "Gestión de Pestañas y Ventanas",
-      action: "Ir a la pestaña anterior",
-      keys: "⌘ + ⌥ + ←",
-    },
-    {
-      category: "chrome",
-      subCategory: "Gestión de Pestañas y Ventanas",
-      action: "Saltar a una pestaña específica (1-8)",
-      keys: "⌘ + 1..8",
-    },
-    {
-      category: "chrome",
-      subCategory: "Gestión de Pestañas y Ventanas",
-      action: "Ir a la última pestaña",
-      keys: "⌘ + 9",
-    },
-    {
-      category: "chrome",
-      subCategory: "Navegación y Acciones",
-      action: "Ir a la barra de navegación",
-      keys: "⌘ + L",
-    },
-    {
-      category: "chrome",
-      subCategory: "Navegación y Acciones",
-      action: "Retroceder en el historial",
-      keys: "⌘ + ←",
-    },
-    {
-      category: "chrome",
-      subCategory: "Navegación y Acciones",
-      action: "Avanzar en el historial",
-      keys: "⌘ + →",
-    },
-    {
-      category: "chrome",
-      subCategory: "Navegación y Acciones",
-      action: "Recargar la página",
-      keys: "⌘ + R",
-    },
-    {
-      category: "chrome",
-      subCategory: "Navegación y Acciones",
-      action: "Recargar la página (ignorando la caché)",
-      keys: "⇧ + ⌘ + R",
-    },
-    {
-      category: "chrome",
-      subCategory: "Navegación y Acciones",
-      action: "Buscar en la página actual",
-      keys: "⌘ + F",
-    },
-    {
-      category: "chrome",
-      subCategory: "Funciones Adicionales",
-      action: "Aumentar el zoom",
-      keys: "⌘ + +",
-    },
-    {
-      category: "chrome",
-      subCategory: "Funciones Adicionales",
-      action: "Disminuir el zoom",
-      keys: "⌘ + -",
-    },
-    {
-      category: "chrome",
-      subCategory: "Funciones Adicionales",
-      action: "Restablecer el zoom al 100%",
-      keys: "⌘ + 0",
-    },
-    {
-      category: "chrome",
-      subCategory: "Funciones Adicionales",
-      action: "Guardar página como marcador",
-      keys: "⌘ + D",
-    },
-    {
-      category: "chrome",
-      subCategory: "Funciones Adicionales",
-      action: "Imprimir la página actual",
-      keys: "⌘ + P",
-    },
-    {
-      category: "chrome",
-      subCategory: "Funciones Adicionales",
-      action: "Abrir el historial de navegación",
-      keys: "⌘ + Y",
-    },
-    {
-      category: "chrome",
-      subCategory: "Funciones Adicionales",
-      action: "Abrir las herramientas para desarrolladores",
-      keys: "⌘ + ⌥ + I",
-    },
-
-    // Edición de Texto
-    {
-      category: "text",
-      subCategory: "Navegación",
-      action: "Ir al principio de la línea",
-      keys: "⌘ + ←",
-    },
-    {
-      category: "text",
-      subCategory: "Navegación",
-      action: "Ir al final de la línea",
-      keys: "⌘ + →",
-    },
-    {
-      category: "text",
-      subCategory: "Navegación",
-      action: "Ir al principio de la palabra anterior",
-      keys: "⌥ + ←",
-    },
-    {
-      category: "text",
-      subCategory: "Navegación",
-      action: "Ir al final de la palabra siguiente",
-      keys: "⌥ + →",
-    },
-    {
-      category: "text",
-      subCategory: "Navegación",
-      action: "Ir al principio del documento",
-      keys: "⌘ + ↑",
-    },
-    {
-      category: "text",
-      subCategory: "Navegación",
-      action: "Ir al final del documento",
-      keys: "⌘ + ↓",
-    },
-    {
-      category: "text",
-      subCategory: "Navegación",
-      action: "Subir un párrafo",
-      keys: "⌥ + ↑",
-    },
-    {
-      category: "text",
-      subCategory: "Navegación",
-      action: "Bajar un párrafo",
-      keys: "⌥ + ↓",
-    },
-    {
-      category: "text",
-      subCategory: "Selección",
-      action: "Seleccionar todo el texto",
-      keys: "⌘ + A",
-    },
-    {
-      category: "text",
-      subCategory: "Selección",
-      action: "Seleccionar hasta el principio de la línea",
-      keys: "⇧ + ⌘ + ←",
-    },
-    {
-      category: "text",
-      subCategory: "Selección",
-      action: "Seleccionar hasta el final de la línea",
-      keys: "⇧ + ⌘ + →",
-    },
-    {
-      category: "text",
-      subCategory: "Selección",
-      action: "Seleccionar la palabra anterior",
-      keys: "⇧ + ⌥ + ←",
-    },
-    {
-      category: "text",
-      subCategory: "Selección",
-      action: "Seleccionar la palabra siguiente",
-      keys: "⇧ + ⌥ + →",
-    },
-    {
-      category: "text",
-      subCategory: "Selección",
-      action: "Seleccionar hasta el principio del documento",
-      keys: "⇧ + ⌘ + ↑",
-    },
-    {
-      category: "text",
-      subCategory: "Selección",
-      action: "Seleccionar hasta el final del documento",
-      keys: "⇧ + ⌘ + ↓",
-    },
-    {
-      category: "text",
-      subCategory: "Modificación",
-      action: "Cortar",
-      keys: "⌘ + X",
-    },
-    {
-      category: "text",
-      subCategory: "Modificación",
-      action: "Copiar",
-      keys: "⌘ + C",
-    },
-    {
-      category: "text",
-      subCategory: "Modificación",
-      action: "Pegar",
-      keys: "⌘ + V",
-    },
-    {
-      category: "text",
-      subCategory: "Modificación",
-      action: "Pegar con el mismo estilo",
-      keys: "⇧ + ⌥ + ⌘ + V",
-    },
-    {
-      category: "text",
-      subCategory: "Modificación",
-      action: "Borrar la palabra anterior",
-      keys: "⌥ + Supr",
-    },
-    {
-      category: "text",
-      subCategory: "Modificación",
-      action: "Borrar hacia adelante",
-      keys: "fn + Supr",
-    },
-    {
-      category: "text",
-      subCategory: "Modificación",
-      action: "Borrar toda la línea",
-      keys: "⌘ + Supr",
-    },
-    {
-      category: "text",
-      subCategory: "Modificación",
-      action: "Deshacer",
-      keys: "⌘ + Z",
-    },
-    {
-      category: "text",
-      subCategory: "Modificación",
-      action: "Rehacer",
-      keys: "⇧ + ⌘ + Z",
-    },
-
-    // Sistema macOS
-    {
-      category: "macos",
-      subCategory: "Gestión General",
-      action: "Abrir Spotlight (Búsqueda)",
-      keys: "⌘ + Espacio",
-    },
-    {
-      category: "macos",
-      subCategory: "Gestión General",
-      action: "Cambiar entre aplicaciones abiertas",
-      keys: "⌘ + Tab",
-    },
-    {
-      category: "macos",
-      subCategory: "Gestión General",
-      action: "Cerrar la aplicación activa",
-      keys: "⌘ + Q",
-    },
-    {
-      category: "macos",
-      subCategory: "Gestión General",
-      action: "Ocultar la ventana actual",
-      keys: "⌘ + H",
-    },
-    {
-      category: "macos",
-      subCategory: "Gestión General",
-      action: "Ocultar todas las demás ventanas",
-      keys: "⌥ + ⌘ + H",
-    },
-    {
-      category: "macos",
-      subCategory: "Gestión General",
-      action: "Minimizar la ventana actual",
-      keys: "⌘ + M",
-    },
-    {
-      category: "macos",
-      subCategory: "Capturas de Pantalla",
-      action: "Capturar área y guardar",
-      keys: "⇧ + ⌘ + 4",
-    },
-    {
-      category: "macos",
-      subCategory: "Capturas de Pantalla",
-      action: "Capturar área y copiar al portapapeles",
-      keys: "⌃ + ⇧ + ⌘ + 4",
-    },
-    {
-      category: "macos",
-      subCategory: "Capturas de Pantalla",
-      action: "Capturar ventana y guardar",
-      keys: "⇧ + ⌘ + 4 , Espacio",
-    },
-    {
-      category: "macos",
-      subCategory: "Capturas de Pantalla",
-      action: "Capturar toda la pantalla",
-      keys: "⇧ + ⌘ + 3",
-    },
-    {
-      category: "macos",
-      subCategory: "Capturas de Pantalla",
-      action: "Abrir el menú de captura",
-      keys: "⇧ + ⌘ + 5",
-    },
-    {
-      category: "macos",
-      subCategory: "Finder",
-      action: "Buscar en la ventana del Finder",
-      keys: "⌘ + F",
-    },
-    {
-      category: "macos",
-      subCategory: "Finder",
-      action: "Mostrar información del archivo",
-      keys: "⌘ + I",
-    },
-    {
-      category: "macos",
-      subCategory: "Finder",
-      action: "Mover a la papelera",
-      keys: "⌘ + Supr",
-    },
-  ];
   const mainContent = document.getElementById("mainContent");
   const searchForm = document.getElementById("searchForm");
   const searchInput = document.getElementById("searchInput");
@@ -381,130 +10,6 @@ document.addEventListener("DOMContentLoaded", () => {
   let currentCategory = "chrome";
 
   const formatKeys = (keys) => {
-    const keyMap = {
-      "⌘": "⌘",
-      cmd: "⌘",
-      command: "⌘",
-      comando: "⌘",
-      ctrl: "⌃",
-      control: "⌃",
-      crtl: "⌃",
-      "⌃": "⌃",
-      alt: "⌥",
-      option: "⌥",
-      opción: "⌥",
-      "⌥": "⌥",
-      shift: "⇧",
-      mayús: "⇧",
-      "⇧": "⇧",
-      fn: "fn",
-      espacio: "Espacio",
-      space: "Espacio",
-      supr: "Supr",
-      delete: "Supr",
-      del: "Supr",
-      tab: "Tab",
-      "↑": "↑",
-      "↓": "↓",
-      "←": "←",
-      "→": "→",
-      enter: "Enter",
-      return: "Enter",
-      intro: "Enter",
-      esc: "Esc",
-      escape: "Esc",
-      capslock: "CapsLock",
-      "bloq mayús": "CapsLock",
-      pageup: "PageUp",
-      avpág: "PageUp",
-      pagedown: "PageDown",
-      repág: "PageDown",
-      home: "Inicio",
-      end: "Fin",
-      inicio: "Inicio",
-      fin: "Fin",
-      printscreen: "ImprPant",
-      imprpant: "ImprPant",
-      f1: "F1",
-      f2: "F2",
-      f3: "F3",
-      f4: "F4",
-      f5: "F5",
-      f6: "F6",
-      f7: "F7",
-      f8: "F8",
-      f9: "F9",
-      f10: "F10",
-      f11: "F11",
-      f12: "F12",
-      0: "0",
-      1: "1",
-      2: "2",
-      3: "3",
-      4: "4",
-      5: "5",
-      6: "6",
-      7: "7",
-      8: "8",
-      9: "9",
-      a: "A",
-      b: "B",
-      c: "C",
-      d: "D",
-      e: "E",
-      f: "F",
-      g: "G",
-      h: "H",
-      i: "I",
-      j: "J",
-      k: "K",
-      l: "L",
-      m: "M",
-      n: "N",
-      o: "O",
-      p: "P",
-      q: "Q",
-      r: "R",
-      s: "S",
-      t: "T",
-      u: "U",
-      v: "V",
-      w: "W",
-      x: "X",
-      y: "Y",
-      z: "Z",
-      "-": "-",
-      "=": "=",
-      "*": "*",
-      "/": "/",
-      ".": ".",
-      ",": ",",
-      ";": ";",
-      ":": ":",
-      "'": "'",
-      '"': '"',
-      "[": "[",
-      "]": "]",
-      "{": "{",
-      "}": "}",
-      "<": "<",
-      ">": ">",
-      "|": "|",
-      "\\": "\\",
-      "?": "?",
-      "!": "!",
-      "@": "@",
-      "#": "#",
-      $: "$",
-      "%": "%",
-      "^": "^",
-      "&": "&",
-      "(": "(",
-      ")": ")",
-      "`": "`",
-      "~": "~",
-    };
-
     const tokens = keys.split(" ");
     return tokens
       .map((key, idx) => {
@@ -514,16 +19,26 @@ document.addEventListener("DOMContentLoaded", () => {
           }
           return '<span class="mx-1 text-slate-400">+</span>';
         }
+        if (key === ",") {
+          if (tokens[idx - 1] === "+") {
+            return `<span class="kbd">,</span>`;
+          }
+          return '<span class="mx-1 text-slate-400">,</span>';
+        }
         const lowerKey = key.toLowerCase();
-        if (keyMap[lowerKey])
-          return `<span class="kbd">${keyMap[lowerKey]}</span>`;
+        const mapped = keyMap[lowerKey];
+        if (mapped) {
+          if (typeof mapped === "object") {
+            return `<span class="kbd">${mapped[lang] || mapped["es"]}</span>`;
+          }
+          return `<span class="kbd">${mapped}</span>`;
+        }
         if (key === ",")
           return '<span class="mx-1 text-slate-400">, luego</span>';
         return key;
       })
       .join(" ");
   };
-
   async function fetchAI(query) {
     const res = await fetch("/api/ai", {
       method: "POST",
@@ -559,9 +74,12 @@ document.addEventListener("DOMContentLoaded", () => {
 
   function renderAll() {
     mainContent.innerHTML = "";
-    const categories = [...new Set(shortcuts.map((s) => s.category))];
+    const filteredShortcuts = getShortcutsByLang();
+    const categories = [...new Set(filteredShortcuts.map((s) => s.category))];
     categories.forEach((cat) => {
-      const categoryShortcuts = shortcuts.filter((s) => s.category === cat);
+      const categoryShortcuts = filteredShortcuts.filter(
+        (s) => s.category === cat
+      );
       const subCategories = [
         ...new Set(categoryShortcuts.map((s) => s.subCategory)),
       ];
@@ -605,6 +123,17 @@ document.addEventListener("DOMContentLoaded", () => {
       categorySection.appendChild(gridContainer);
       mainContent.appendChild(categorySection);
     });
+  }
+
+  const browserLang = (
+    navigator.language ||
+    navigator.userLanguage ||
+    "es"
+  ).slice(0, 2);
+  let lang = ["es", "en"].includes(browserLang) ? browserLang : "es";
+
+  function getShortcutsByLang() {
+    return shortcuts.filter((s) => !s.lang || s.lang === lang);
   }
 
   function showCategory(categoryToShow) {
