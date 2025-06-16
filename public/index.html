@@ -58,9 +58,9 @@
           class="mt-6 flex justify-center items-center space-x-4 md:space-x-8 border-b border-slate-200"
         >
           <button
-            data-target="chrome"
+            data-target="browser"
             class="nav-btn font-semibold text-slate-500 py-3 px-2 active"
-            id="navChrome"
+            id="navBrowser"
           ></button>
           <button
             data-target="text"
@@ -68,9 +68,9 @@
             id="navText"
           ></button>
           <button
-            data-target="macos"
+            data-target="os"
             class="nav-btn font-semibold text-slate-500 py-3 px-2"
-            id="navMacos"
+            id="navOS"
           ></button>
         </nav>
       </div>
@@ -98,9 +98,9 @@
       document
         .getElementById("searchBtn")
         .setAttribute("aria-label", t.searchBtn);
-      document.getElementById("navChrome").textContent = t.navChrome;
+      document.getElementById("navBrowser").textContent = t.navBrowser;
       document.getElementById("navText").textContent = t.navText;
-      document.getElementById("navMacos").textContent = t.navMacos;
+      document.getElementById("navOS").textContent = t.navOS;
       document.getElementById("noResults").textContent = t.noResults;
     </script>
   </body>

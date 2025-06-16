@@ -7,7 +7,7 @@ document.addEventListener("DOMContentLoaded", () => {
   const navigation = document.getElementById("navigation");
   const noResults = document.getElementById("noResults");
   const aiResultsContainer = document.getElementById("aiResultsContainer");
-  let currentCategory = "chrome";
+  let currentCategory = "browser";
 
   const formatKeys = (keys) => {
     const tokens = keys.split(" ");
@@ -74,7 +74,7 @@ document.addEventListener("DOMContentLoaded", () => {
 
   function renderAll() {
     mainContent.innerHTML = "";
-    const filteredShortcuts = getShortcutsByLang();
+    const filteredShortcuts = getShortcuts();
     const categories = [...new Set(filteredShortcuts.map((s) => s.category))];
     categories.forEach((cat) => {
       const categoryShortcuts = filteredShortcuts.filter(
@@ -132,8 +132,60 @@ document.addEventListener("DOMContentLoaded", () => {
   ).slice(0, 2);
   let lang = ["es", "en"].includes(browserLang) ? browserLang : "es";
 
-  function getShortcutsByLang() {
-    return shortcuts.filter((s) => !s.lang || s.lang === lang);
+  function detectOS() {
+    const userAgent = navigator.userAgent.toLowerCase();
+    if (userAgent.includes("mac")) {
+      return "macos";
+    } else if (userAgent.includes("win")) {
+      return "windows";
+    } else if (userAgent.includes("linux")) {
+      return "windows";
+    } else {
+      return "macos";
+    }
+  }
+
+  function detectBrowser() {
+    const userAgent = navigator.userAgent.toLowerCase();
+    if (userAgent.includes("firefox")) {
+      return "firefox";
+    } else if (userAgent.includes("chrome") || userAgent.includes("chromium")) {
+      return "chrome";
+    } else if (userAgent.includes("safari") && !userAgent.includes("chrome")) {
+      return "chrome";
+    } else if (userAgent.includes("edge")) {
+      return "chrome";
+    } else {
+      return "chrome";
+    }
+  }
+
+  const userOS = detectOS();
+  const userBrowser = detectBrowser();
+
+  function getShortcuts() {
+    const filtered = shortcuts.filter((s) => {
+      const langMatch = !s.lang || s.lang === lang;
+
+      const osMatch = !s.os || s.os === userOS;
+
+      let browserMatch = true;
+      if (s.category === "browser") {
+        browserMatch = !s.browser || s.browser === userBrowser;
+      }
+
+      const match = langMatch && osMatch && browserMatch;
+      if (
+        s.category === "browser" ||
+        s.category === "chrome" ||
+        s.category === "firefox"
+      ) {
+      }
+
+      return match;
+    });
+
+    return filtered;
   }
 
   function showCategory(categoryToShow) {

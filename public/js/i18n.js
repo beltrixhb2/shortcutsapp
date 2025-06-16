@@ -6,9 +6,9 @@ export const strings = {
       "Busca en nuestra guía o pregunta a la IA por atajos de cualquier app.",
     searchPlaceholder: "Pregunta a la IA o filtra la lista...",
     searchBtn: "Buscar con IA",
-    navChrome: "Google Chrome",
+    navBrowser: "Navegador",
     navText: "Edición de Texto",
-    navMacos: "Sistema macOS",
+    navOS: "Sistema Operativo",
     noResults: "No se encontraron atajos que coincidan con tu búsqueda.",
   },
   en: {
@@ -16,9 +16,9 @@ export const strings = {
     mainSubtitle: "Search our guide or ask the AI for shortcuts for any app.",
     searchPlaceholder: "Ask AI or filter the list...",
     searchBtn: "Search with AI",
-    navChrome: "Google Chrome",
+    navBrowser: "Browser",
     navText: "Text Editing",
-    navMacos: "macOS System",
+    navOS: "Operating System",
     noResults: "No shortcuts matching your search were found.",
   },
 };
