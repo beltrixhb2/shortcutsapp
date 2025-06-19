@@ -7,6 +7,8 @@ const winston = require("winston");
 dotenv.config();
 const app = express();
 
+app.use(express.json());
+
 const logger = winston.createLogger({
   level: "info",
   format: winston.format.combine(
